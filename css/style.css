@@ -9,7 +9,19 @@
 .grid-container {
     display: flex;
     flex-wrap: wrap;
-    width: calc(var(--cell-size) * 8);
+}
+
+.grid-container.easy {
+    width: calc(var(--cell-size) * 10);
+    height: calc(var(--cell-size) * 10);
+}
+.grid-container.medium {
+    width: calc(var(--cell-size) * 9);
+    height: calc(var(--cell-size) * 9);
+}
+.grid-container.hard {
+    width: calc(var(--cell-size) * 7);
+    height: calc(var(--cell-size) * 7);
 }
 
 .grid-container .cell {

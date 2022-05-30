@@ -33,7 +33,7 @@ btnPlay.addEventListener("click", function () {
   generateGrid();
 });  
 //creo la funzione per genereare le bombe
-function generateBombs(maxNumber, maxBombsNumber = 16) {
+function generateBombs(maxNumber, maxBombsNumber) {
   //creo un array dove inserire la lista di bombe generate
   const bombsList = [];
   
@@ -52,18 +52,35 @@ function generateBombs(maxNumber, maxBombsNumber = 16) {
 function generateGrid() {
   //creo una variabile per la difficoltà
   let difficulty = document.getElementById("selectDifficulty").value;
-  //numero di celle da generare
-  const totCells = 8 * 8;
+  let totCells;
+  let totBombs;
 
-  const bombsList = generateBombs(totCells);
+  if(difficulty === "easy") {
+    totCells = 100;
+    totBombs = 16;
+  } else if(difficulty === "medium") {
+    totCells = 81;
+    totBombs = 14;
+  } else if(difficulty === "hard") {
+    totCells = 49;
+    totBombs = 12;
+  }
+  console.log(totBombs)
+
+  const bombsList = generateBombs(totCells, totBombs);
 
   //stampa in html la griglia
-  renderGrid(totCells, bombsList);
+  renderGrid(totCells, bombsList, difficulty);
 };
 
 function renderGrid(totCells, bombsList, levelClass) {
   
   gridContainer.innerHTML = "";
+
+  gridContainer.classList.remove("easy", "medium", "hard");
+
+  gridContainer.classList.add(levelClass);
+
   // creo ogni singola cella necessaria
   for (let i = 1; i <= totCells; i++) {
     let randomNumber = i;
@@ -109,7 +126,6 @@ function addCellEventListeners(cell, bombsList) {
     console.log("cliccato cella numero: ", cellIndex);
   });
 };
-
 
 
 const btnDelete = document.getElementById("btnDelete");
