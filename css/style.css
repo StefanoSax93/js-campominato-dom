@@ -1,5 +1,5 @@
 :root {
-    --cell-size: 49px;
+    --cell-size: 48px;
     --bs-primary: #7CFFD2;
     --bs-primary-rgb: 124, 255, 210;
     --bs-secondary: #6495F1;
@@ -9,6 +9,7 @@
 .grid-container {
     display: flex;
     flex-wrap: wrap;
+    width: calc(var(--cell-size) * 8);
 }
 
 .grid-container .cell {
